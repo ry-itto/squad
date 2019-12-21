@@ -332,6 +332,8 @@ def load_model(model, checkpoint_path, gpu_ids, return_step=True):
         model (torch.nn.DataParallel): Model loaded from checkpoint.
         step (int): Step at which checkpoint was saved. Only if `return_step`.
     """
+    # Documentation about fix this bug.
+    # https://pytorch.org/tutorials/beginner/saving_loading_models.html#save-on-gpu-load-on-cpu
     device = f"cuda:{gpu_ids[0]}" if gpu_ids else torch.device('cpu')
     ckpt_dict = torch.load(checkpoint_path, map_location=device)
 
